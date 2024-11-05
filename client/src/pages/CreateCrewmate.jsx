@@ -41,7 +41,7 @@ const CreateCrewmate = () => {
                 <input type="text" id="speed" name="speed" onChange={handleChange} /><br />
                 <br/>
 
-                <label for="aesthetics">Aesthetics (ie. color, hat, visors, pets)</label><br />
+                <label for="aesthetics">Aesthetics (ie. color, skin, hat, visors, pets)</label><br />
                 <textarea rows="5" cols="50" id="aesthetics" onChange={handleChange}>
                 </textarea>
                 <br/>
