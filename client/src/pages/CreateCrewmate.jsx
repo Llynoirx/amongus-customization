@@ -21,7 +21,10 @@ const CreateCrewmate = () => {
     
       await supabase
         .from('Posts')
-        .insert({title: post.title, author: post.author, description: post.description})
+        .insert({
+            name: post.name, 
+            speed: post.speed, 
+            aesthetics: post.aesthetics})
         .select();
     
       window.location = "/";
@@ -31,15 +34,15 @@ const CreateCrewmate = () => {
         <div>
             <form>
                 <label for="title">Title</label> <br />
-                <input type="text" id="title" name="title" onChange={handleChange} /><br />
+                <input type="text" id="name" name="name" onChange={handleChange} /><br />
                 <br/>
 
-                <label for="author">Author</label><br />
-                <input type="text" id="author" name="author" onChange={handleChange} /><br />
+                <label for="speed">Author</label><br />
+                <input type="text" id="speed" name="speed" onChange={handleChange} /><br />
                 <br/>
 
-                <label for="description">Description</label><br />
-                <textarea rows="5" cols="50" id="description" onChange={handleChange}>
+                <label for="aesthetics">Aesthetics (ie. color, hat, visors, pets)</label><br />
+                <textarea rows="5" cols="50" id="aesthetics" onChange={handleChange}>
                 </textarea>
                 <br/>
                 <input type="submit" value="Submit" onClick={createPost} />
