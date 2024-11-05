@@ -4,10 +4,11 @@ import './Sidebar.css';
 const Sidebar = () => {
     return (
         <div className="sidebar">
-        <h3>RECIPE DASHBOARD</h3>
+        <h3>AMONG-US CREWMATE CUSTOMIZATION</h3>
         <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
+            <li><Link to="/create-a-crewmate">Create a Crewmate</Link></li>
+            <li><Link to="/crewmate-gallery">Crewmate Gallery</Link></li>
         </ul>
         </div>
     );
