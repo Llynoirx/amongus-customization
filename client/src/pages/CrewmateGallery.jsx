@@ -23,8 +23,9 @@ const CrewmateGallery = (props) => {
     }, [props]);
     
     return (
-        <div className="CrewmateGallery">
+        <div>
             <Sidebar/>
+            <div className="CrewmateGallery">
             {
                 posts && posts.length > 0 ?
                 posts.map((post,index) => 
@@ -32,6 +33,7 @@ const CrewmateGallery = (props) => {
                 ) : <h2>{'No Crewmates Yet 😞'}</h2>
             }
         </div>  
+        </div>
     )
 }
 

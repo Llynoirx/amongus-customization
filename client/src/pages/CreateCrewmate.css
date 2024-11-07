@@ -38,3 +38,7 @@ input[type=submit] {
 input[type=submit]:hover {
     border-color: #646cff;
 }
+
+.form{
+    margin-left: 500px;
+}

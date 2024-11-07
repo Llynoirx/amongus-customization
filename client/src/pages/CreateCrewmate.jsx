@@ -35,7 +35,7 @@ const CreateCrewmate = () => {
     return (
         <div>
             <Sidebar />
-            <form>
+            <form className="form">
                 <label for="name">Name</label> <br />
                 <input type="text" id="name" name="name" onChange={handleChange} /><br />
                 <br/>
