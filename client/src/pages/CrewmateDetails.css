@@ -1,0 +1,87 @@
+/* CrewmateDetails.css */
+
+/* General container styling */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    margin-left: 500px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-left: 500px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    margin: 5px 0;
+  }
+  
+  strong {
+    font-weight: bold;
+  }
+  
+  
+  /* Button styles */
+  .update-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+  }
+  
+  .update-button:hover {
+    background-color: #45a049;
+  }
+  
+  .cancel-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+  }
+  
+  .cancel-button:hover {
+    background-color: #e53935;
+  }
+  
+  .edit-button {
+    background-color: #FF9800;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .edit-button:hover {
+    background-color: #fb8c00;
+  }
+  
+  .delete-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .loading {
+    font-size: 1.2rem;
+    color: #777;
+    text-align: center;
+  }
+  
+  

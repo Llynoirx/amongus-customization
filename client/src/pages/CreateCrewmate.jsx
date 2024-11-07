@@ -1,57 +1,57 @@
 import React, { useState } from 'react';
-import  {supabase} from '../client'
+import { supabase } from '../client';
 import Sidebar from '../Components/Sidebar';
-import './CreateCrewmate.css'
+import { useNavigate } from 'react-router-dom'; 
+import { NameInput, SpeedInput, ColorSelection } from '../Components/Form'; 
+// import './CreateCrewmate.css';
 
-const CreateCrewmate = () => {
+function CreateCrewmate() {
+  const [fields, setFields] = useState({ name: '', speed: '', color: '' });
+  const navigate = useNavigate(); 
 
-    const [post, setPost] = useState({name: "", speed: "", aesthetics: ""})
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFields((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-    const handleChange = (event) => {
-        const {name, value} = event.target;
-        setPost( (prev) => {
-            return {
-                ...prev,
-                [name]:value,
-            }
-        })
+  const makeCrewmate = async (e) => {
+    e.preventDefault();
+
+    if (!fields.name || !fields.speed || !fields.color) {
+      alert('Please fill in all fields');
+      return;
     }
 
-    const createPost = async (event) => {
-      event.preventDefault();
-    
-      await supabase
-        .from('Posts')
-        .insert({
-            name: post.name, 
-            speed: post.speed, 
-            aesthetics: post.aesthetics})
-        .select();
-        alert('Crewmate successfully created');
+    const { error } = await supabase
+      .from('Posts')
+      .insert([{ name: fields.name, speed: fields.speed, color: fields.color }])
+      .select();
 
-      window.location = "/";
+    if (error) {
+      alert("Couldn't create crewmate; please try again");
+    } else {
+      alert('Crewmate successfully created');
+      navigate('/crewmate-gallery');
     }
+  };
 
-    return (
-        <div>
-            <Sidebar />
-            <form className="form">
-                <label for="name">Name</label> <br />
-                <input type="text" id="name" name="name" onChange={handleChange} /><br />
-                <br/>
-
-                <label for="speed">Speed (mph)</label><br />
-                <input type="text" id="speed" name="speed" onChange={handleChange} /><br />
-                <br/>
-
-                <label for="aesthetics">Aesthetics (ie. color, skin, hat, visors, pets)</label><br />
-                <textarea rows="5" cols="50" id="aesthetics" onChange={handleChange}>
-                </textarea>
-                <br/>
-                <input type="submit" value="Submit" onClick={createPost} />
-            </form>
-        </div>
-    )
+  return (
+    <div>
+      <Sidebar />
+      <h1>Create a New Crewmate</h1>
+      <div className="container">
+        <form className="form" onSubmit={makeCrewmate}>
+        <NameInput fields={fields} handleChange={handleChange} />
+        <SpeedInput fields={fields} handleChange={handleChange} />
+        <ColorSelection fields={fields} handleChange={handleChange} />
+        <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default CreateCrewmate;

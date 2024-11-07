@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import  {supabase} from '../client';
-import Sidebar from '../Components/Sidebar';
 import Card from '../Components/Card';
+// import './CrewmateGallery.css'
+import Sidebar from '../Components/Sidebar';
 
 const CrewmateGallery = (props) => {
 
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        setPosts(props.data);
-
         const fetchPost = async() => {
-            const {data} = await supabase
-            .from('Posts')
-            .select()
-            .order('created_at', { ascending: true })
-
-            // set state of posts
+            const { data, error } = await supabase
+                .from('Posts')
+                .select();
+            
+            if (error) {
+                console.error(error);
+            }
+    
+            console.log(data); // Log the fetched data
+    
             setPosts(data);
         }
         fetchPost()
@@ -24,15 +27,19 @@ const CrewmateGallery = (props) => {
     
     return (
         <div>
-            <Sidebar/>
+            <Sidebar />
             <div className="CrewmateGallery">
-            {
-                posts && posts.length > 0 ?
-                posts.map((post,index) => 
-                   <Card id={post.id} name={post.name} speed={post.speed} aesthetics={post.aesthetics}/>
-                ) : <h2>{'No Crewmates Yet 😞'}</h2>
-            }
-        </div>  
+                { posts && posts.length > 0 ?
+                posts.map((post) => 
+                    <Card 
+                        key={post.id} 
+                        id={post.id} 
+                        name={post.name}
+                        speed={post.speed}
+                        color={post.color}
+                    />
+                ) : <h2>{'No Crewmates Yet 😞'}</h2> }
+            </div>  
         </div>
     )
 }
