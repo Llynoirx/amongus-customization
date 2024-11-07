@@ -30,7 +30,9 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented required features:
+
 ![](https://github.com/Llynoirx/amongus-customization/blob/main/amongus-customization.gif)
+
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with AwesomeScreenshot and EzGif  
