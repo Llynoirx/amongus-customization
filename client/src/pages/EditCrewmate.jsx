@@ -23,7 +23,7 @@ const EditCrewmate = ({data}) => {
 
         await supabase
             .from('Posts')
-            .update({ title: post.title, author: post.author,  description: post.description})
+            .update({ name: post.name, speed: post.speed,  aesthetics: post.aesthetics})
             .eq('id', id);
 
         window.location = "/";
@@ -43,16 +43,16 @@ const EditCrewmate = ({data}) => {
     return (
         <div>
             <form>
-                <label for="title">Title</label> <br />
-                <input type="text" id="title" name="title" value={post.title} onChange={handleChange} /><br />
+                <label for="name">Name</label> <br />
+                <input type="text" id="name" name="name" value={post.name} onChange={handleChange} /><br />
                 <br/>
 
-                <label for="author">Author</label><br />
-                <input type="text" id="author" name="author" value={post.author} onChange={handleChange} /><br />
+                <label for="speed">Speed</label><br />
+                <input type="text" id="speed" name="speed" value={post.speed} onChange={handleChange} /><br />
                 <br/>
 
-                <label for="description">Description</label><br />
-                <textarea rows="5" cols="50" id="description" value={post.description} onChange={handleChange} >
+                <label for="aesthetics">Aesthetics</label><br />
+                <textarea rows="5" cols="50" id="aesthetics" value={post.aesthetics} onChange={handleChange} >
                 </textarea>
                 <br/>
                 <input type="submit" value="Submit" onClick={updatePost} />

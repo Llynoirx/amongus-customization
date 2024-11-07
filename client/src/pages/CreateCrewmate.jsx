@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import  {supabase} from '../client'
+import Sidebar from '../Components/Sidebar';
 import './CreateCrewmate.css'
 
 const CreateCrewmate = () => {
 
-    const [post, setPost] = useState({title: "", author: "", description: ""})
+    const [post, setPost] = useState({name: "", speed: "", aesthetics: ""})
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -26,18 +27,20 @@ const CreateCrewmate = () => {
             speed: post.speed, 
             aesthetics: post.aesthetics})
         .select();
-    
+        alert('Crewmate successfully created');
+
       window.location = "/";
     }
 
     return (
         <div>
+            <Sidebar />
             <form>
-                <label for="title">Title</label> <br />
+                <label for="name">Name</label> <br />
                 <input type="text" id="name" name="name" onChange={handleChange} /><br />
                 <br/>
 
-                <label for="speed">Author</label><br />
+                <label for="speed">Speed (mph)</label><br />
                 <input type="text" id="speed" name="speed" onChange={handleChange} /><br />
                 <br/>
 
@@ -51,4 +54,4 @@ const CreateCrewmate = () => {
     )
 }
 
-export default CreateCrewmate
+export default CreateCrewmate;

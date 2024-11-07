@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import  {supabase} from '../client';
+import Sidebar from '../Components/Sidebar';
 import Card from '../Components/Card';
 
 const CrewmateGallery = (props) => {
@@ -23,6 +24,7 @@ const CrewmateGallery = (props) => {
     
     return (
         <div className="CrewmateGallery">
+            <Sidebar/>
             {
                 posts && posts.length > 0 ?
                 posts.map((post,index) => 
